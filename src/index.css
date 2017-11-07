@@ -3,3 +3,35 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+#root{
+  background-color: #dbdadc;
+  height: 100%;
+}
+.navigation{
+  background-color: #e5e3e6;
+
+}
+.navigation li, input{
+    display:inline-flex;
+    align-items: center;
+    margin: 1%;
+    color: white;
+}
+
+.navigation li a{
+  text-decoration: none;
+}
+
+.navigation li a:visited{
+  color: white;
+}
+
+article{
+  background: #e5e3e6;
+  margin: 1%
+}
+article p{
+  padding: 0.5%;
+  margin: 0.3%;
+  font-size: 1.01em;
+}
