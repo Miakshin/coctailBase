@@ -14,8 +14,17 @@ body {
 .navigation li, input{
     display:inline-flex;
     align-items: center;
-    margin: 1%;
     color: white;
+}
+.navigation li{
+  padding: 1%;
+}
+.navigation input{
+  margin: 1%;
+}
+
+.navigation li:hover{
+  background-color:  #dbdadc;
 }
 
 .navigation li a{
