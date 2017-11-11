@@ -1,14 +1,29 @@
+html{
+  height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  height: 100%;
 }
 #root{
   background-color: #dbdadc;
   height: 100%;
 }
-.navigation{
+#root div{
+  height: 100%;
+}
+
+.addCoctailForm, .coctailsPage, .home{
+  color: #464c63;
+    font-size: 1.1em;
+}
+
+/* navigation */
+nav.navigation{
   background-color: #e5e3e6;
+  min-width: 10%;
 
 }
 .navigation li, input{
@@ -43,4 +58,49 @@ article p{
   padding: 0.5%;
   margin: 0.3%;
   font-size: 1.01em;
+}
+/* Main */
+main.main {
+  min-height: 80%;
+  width: 100%;
+}
+/* home page */
+.home{
+  padding: 0.3%;
+}
+
+.home img{
+  height: 25%;
+  width: 25%;
+}
+.home p{
+  font-size: 1.3em;
+}
+.home h1, .addCoctailForm h1{
+  text-align: center;
+  font-size: 1.7em;
+}
+
+/* Footer */
+form.addCoctailForm{
+  margin-left: 0.7%;
+}
+form.addCoctailForm div[class|="line"] label, form.addCoctailForm div[class|="line"] input{
+  margin-right: 0.3%;
+}
+form.addCoctailForm div[class|="line"] input{
+  color: #464c63;
+}
+div.line{
+  margin: 0.3%;
+}
+/* Footer */
+
+footer{
+    background-color: #e5e3e6;
+    padding: 0.2%;
+    color: #464c63;
+    font-size: 1.3em;
+    min-height: 10%;
+    max-height: 10%;
 }

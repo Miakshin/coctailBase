@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Line = () => (
-  <div className="line">
-    <label>Компонент</label><input tepe="text"
-    placeholder="введите название компонента"/>
+function Line(props){
+  return (<div className={"line-" + props.id}>
+    <label>Компонент</label><input type="text"
+    placeholder="введите компонент"
+    />
     <label>Количество</label>
     <input type="number"
     min="1" max="500"/>
@@ -13,6 +14,8 @@ const Line = () => (
       <option>Шт.</option>
     </select>
   </div>
-);
+  )
+}
+;
 
 export default Line;

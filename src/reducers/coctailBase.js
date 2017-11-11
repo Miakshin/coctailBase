@@ -1,4 +1,4 @@
-const initialState=[
+const coctailBase=[
   {
     name: 'Negroni',
     img : '../img/someCoct.png',
@@ -23,14 +23,4 @@ const initialState=[
     recipe : 'Налей в шейкер лаймовый сок 30 мл, сахарный сироп 15 мл и белый ром 60 мл. Наполни шейкер кубиками льда и взбей.Перелей через стрейнер в охлажденное шампанское блюдце.'
   }
 ];
-
-export default function coctailBase(state = initialState, action){
-  if(action.type === "ADD_COCTAIL"){
-    return
-      [...state,
-      action.payload
-    ];
-
-  }
-  return state;
-}
+export default coctailBase;

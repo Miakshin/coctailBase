@@ -3,13 +3,13 @@ import { createStore } from 'redux';
 
 import coctailBase from '../reducers/coctailBase';
 
-const store = createStore(coctailBase);
+const store = coctailBase;
 
 
 class Coctails extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {store: store.getState()
+    this.state = {store: store
     };
   }
   render(){
@@ -27,7 +27,7 @@ class Coctails extends React.Component{
   )
 
     return(
-      <div>{showCoctails}</div>
+      <div className="coctailsPage">{showCoctails}</div>
     )
   }
 }
