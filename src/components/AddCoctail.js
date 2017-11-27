@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
-import coctailBase from '../reducers/coctailBase';
 import Line from './Line.js'
 
-const store = coctailBase;
 
 class AddCoctail extends Component{
   constructor(props) {

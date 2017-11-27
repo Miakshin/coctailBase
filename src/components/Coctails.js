@@ -1,19 +1,16 @@
 import React from 'react';
+import {connect } from 'react-redux';
 import { createStore } from 'redux';
-
-import coctailBase from '../reducers/coctailBase';
-
-const store = coctailBase;
 
 
 class Coctails extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {store: store
-    };
+    this.state = {}
   }
-  render(){
-    const showCoctails = this.state.store.map((coctail,id) =>
+
+    showCoctails(store){
+      store.coctailBase.map((coctail,id) =>
     <article key={id}>
       <img src={coctail.img}/>
       <p>Название: {coctail.name}</p>
@@ -23,13 +20,21 @@ class Coctails extends React.Component{
     )
       }</p>
       <p>Рецепт приготовления: {coctail.recipe}</p>
-    </article>
-  )
+      </article>
+    )}
 
+  render(){
     return(
-      <div className="coctailsPage">{showCoctails}</div>
+      <div className="coctailsPage">{this.showCoctails(this.props.coctailStore)}</div>
+
     )
   }
 }
 
-export default Coctails;
+
+export default connect(
+  state => ({
+    coctailStore: state
+  }),
+  dispatch =>({})
+)(Coctails);

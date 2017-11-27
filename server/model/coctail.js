@@ -4,7 +4,9 @@ var Schema = mongoose.Schema;
 //object that shows the shape of your database entries.
 var CoctailsSchema = new Schema({
  name: String,
- recipe: String
+ components: Array,
+ recipe: String,
+ createdAt: Date
 });
 //export our module to use in server.js
 module.exports = mongoose.model('Coctail', CoctailsSchema);
