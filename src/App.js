@@ -9,7 +9,6 @@ class App extends Component {
   render(){
     return(
   <div>
-  {console.log(this.props.testStore)}
     <Header />
     <Main />
     <Footer />

@@ -9,8 +9,9 @@ class Coctails extends React.Component{
     this.state = {}
   }
 
-    showCoctails(store){
-      store.coctailBase.map((coctail,id) =>
+  render(){
+    console.log(this.props.coctailStore)
+    const showCoctails = this.props.coctailStore.map((coctail,id) =>
     <article key={id}>
       <img src={coctail.img}/>
       <p>Название: {coctail.name}</p>
@@ -21,11 +22,9 @@ class Coctails extends React.Component{
       }</p>
       <p>Рецепт приготовления: {coctail.recipe}</p>
       </article>
-    )}
-
-  render(){
+    )
     return(
-      <div className="coctailsPage">{this.showCoctails(this.props.coctailStore)}</div>
+      <div className="coctailsPage">{showCoctails}</div>
 
     )
   }
@@ -34,7 +33,7 @@ class Coctails extends React.Component{
 
 export default connect(
   state => ({
-    coctailStore: state
+    coctailStore: state.coctailBase
   }),
   dispatch =>({})
 )(Coctails);
