@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect } from 'react-redux';
-import { createStore } from 'redux';
 
 
 class Coctails extends React.Component{

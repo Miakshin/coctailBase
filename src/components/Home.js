@@ -5,7 +5,7 @@ const Home = () => (
     <h1>Coctail Base</h1>
     <div>
       <p>
-      <img src="img/homePageLogo.png"/>
+      <img src="img/homePageLogo.png" alt='coctailPict'/>
       In this page you can add in base your coctail and search new test for you</p>
     </div>
   </main>

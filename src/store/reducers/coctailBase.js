@@ -25,10 +25,9 @@ const initialState=[
 ];
 export default function coctailBase(state = initialState, action){
    if(action.type === "ADD_COCTAIL"){
-     return
-       [...state,
-       action.payload
-     ];
+     return[ ...state, action.payload];
+
+
    }else if(action.type === "DELETE_COCTAIL"){
      return
        [...state,

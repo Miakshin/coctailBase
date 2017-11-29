@@ -12,7 +12,9 @@ class AddCoctail extends Component{
   }
 
   addMoreLine(){
-    this.setState({lineCounts: this.state.lineCounts+=1});
+    // this.props.onAddLine();
+    this.setState({ lineCounts: this.state.lineCounts+=1 });
+
   }
 
   sendForm(){
@@ -35,7 +37,6 @@ class AddCoctail extends Component{
       recipe: document.getElementById('recipe').value,
       components: components
     }
-
     this.props.onAddCoctail(coctail);
   }
 
@@ -67,11 +68,15 @@ class AddCoctail extends Component{
 
 export default connect(
   state => ({
-    coctailStore: state.coctailBase
+    coctailStore: state.coctailBase,
+    lineState: state.lineReducer
   }),
   dispatch =>({
-    onAddCoctail: (coctail) =>{
-      dispatch({ type: 'ADD_COCTAIL', payload: coctail})
+    onAddCoctail: (value) =>{
+      dispatch({ type: 'ADD_COCTAIL', payload: value})
+    },
+    onAddLine: () =>{
+      dispatch({ type: 'ADD_LINE'})
     }
   })
 )(AddCoctail);
