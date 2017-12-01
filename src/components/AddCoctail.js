@@ -7,13 +7,18 @@ import Line from './Line.js'
 class AddCoctail extends Component{
   constructor(props) {
     super(props);
-    this.state = { lineCounts: 2
+    this.state = { lineCounts: this.props.lineState
     };
   }
 
+  componentDidMount(){
+    console.log(this.props.lineState);
+  }
+
   addMoreLine(){
-    // this.props.onAddLine();
-    this.setState({ lineCounts: this.state.lineCounts+=1 });
+    this.props.onAddLine();
+    console.log(this.props.lineState);
+    this.setState({ lineCounts: this.props.lineState });
 
   }
 
@@ -38,6 +43,7 @@ class AddCoctail extends Component{
       components: components
     }
     this.props.onAddCoctail(coctail);
+    this.props.onResetLineState();
   }
 
   render() {
@@ -55,7 +61,8 @@ class AddCoctail extends Component{
           <input type="text" name="name" placeholder="Введите название"
           id='coctailName'/>
           {lineList}
-          <button className="AddLineBtn" onClick={()=>this.addMoreLine()}>Add a line</button>
+          <input type="button" className="AddLineBtn"
+          onClick={()=>this.addMoreLine()} value="Add a line" />
           <br/>
           <label>Рецепт приготовления</label>
           <textarea id='recipe'></textarea>
@@ -68,6 +75,7 @@ class AddCoctail extends Component{
 
 export default connect(
   state => ({
+    store: state,
     coctailStore: state.coctailBase,
     lineState: state.lineReducer
   }),
@@ -77,6 +85,9 @@ export default connect(
     },
     onAddLine: () =>{
       dispatch({ type: 'ADD_LINE'})
+    },
+    onResetLineState: ()=>{
+      dispatch({ type: 'RESET_LINE_STATE'})
     }
   })
 )(AddCoctail);
