@@ -1,16 +1,18 @@
 import React from 'react';
 import {connect } from 'react-redux';
+import axios from 'axios';
 
 
 class Coctails extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {data :[]}
   }
 
-  render(){
-    console.log(this.props.coctailStore)
-    const showCoctails = this.props.coctailStore.map((coctail,id) =>
+  loadDataFromApi(){
+    axios.get("http://localhost:3001/coctails")
+    .then(res=>{
+    let mapedData = res.data.map((coctail,id) =>
     <article key={id}>
       <img src={coctail.img}/>
       <p>Название: {coctail.name}</p>
@@ -22,8 +24,19 @@ class Coctails extends React.Component{
       <p>Рецепт приготовления: {coctail.recipe}</p>
       </article>
     )
+    this.setState({data: mapedData});
+
+    })
+  }
+
+  componentDidMount(){
+    this.loadDataFromApi();
+    // setTimeout(this.loadDataFromApi, 2000);
+  }
+
+  render(){
     return(
-      <div className="coctailsPage">{showCoctails}</div>
+      <div className="coctailsPage">{this.state.data}</div>
 
     )
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect } from 'react-redux';
+import axios from 'axios';
 
 import Line from './Line.js'
 
@@ -42,6 +43,12 @@ class AddCoctail extends Component{
       recipe: document.getElementById('recipe').value,
       components: components
     }
+    console.log(coctail);
+    axios({
+      method: 'post',
+      url: 'http://localhost:3001/coctails',
+      data: coctail
+    })
     this.props.onAddCoctail(coctail);
     this.props.onResetLineState();
   }

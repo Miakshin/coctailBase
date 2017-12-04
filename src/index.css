@@ -94,6 +94,9 @@ form.addCoctailForm div[class|="line"] input{
 div.line{
   margin: 0.3%;
 }
+form.addCoctailForm input[type=text], form.addCoctailForm input[type=button]{
+  color: #464c63;
+}
 /* Footer */
 
 footer{
