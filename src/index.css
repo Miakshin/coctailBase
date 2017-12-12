@@ -38,6 +38,10 @@ nav.navigation{
   margin: 1%;
 }
 
+.navigation input.inputSearch{
+  color:#dbdadc;
+}
+
 .navigation li:hover{
   background-color:  #dbdadc;
 }
@@ -59,6 +63,25 @@ article p{
   margin: 0.3%;
   font-size: 1.01em;
 }
+div#root div.searchWraper{
+  display: block;
+  position: absolute;
+  width: 45%;
+  min-height: 3%;
+  max-height: 15%;
+  background-color: #e5e3e6;
+  border: 1px solid white;
+}
+div#root div.searchWraper ul div{
+  background-color: #e5e3e6;
+}
+div#root div.searchWraper ul div a{
+  color: white;
+}
+div#root div.searchWraper-hiden{
+  display: none;
+}
+
 /* Main */
 main.main {
   min-height: 80%;

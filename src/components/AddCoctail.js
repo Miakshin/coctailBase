@@ -6,11 +6,6 @@ import Line from './Line.js'
 
 
 class AddCoctail extends Component{
-  constructor(props) {
-    super(props);
-    this.state = { lineCounts: this.props.lineState
-    };
-  }
 
   componentDidMount(){
     console.log(this.props.lineState);
@@ -55,7 +50,7 @@ class AddCoctail extends Component{
 
   render() {
       let lines=[];
-      for( let i=0; i<this.state.lineCounts ;i++ ){
+      for( let i=0; i<this.props.lineState ;i++ ){
         lines.push(i)
       }
       const lineList = lines.map((id) =>
