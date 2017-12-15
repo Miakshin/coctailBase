@@ -130,3 +130,8 @@ footer{
     min-height: 10%;
     max-height: 10%;
 }
+
+/*AddCoctain component */
+#root div main form.addCoctailForm input.inPassing{
+  display: none;
+}

@@ -33,3 +33,29 @@ export function onFindCoctail(value){
         })
     };
 }
+
+export function addCoctails(coctail) {
+    return dispatch => {
+
+        dispatch({
+            type: 'ADD_COCTAIL_REQUESTED'
+        });
+
+        axios({
+          method: 'post',
+          url: 'http://localhost:3001/coctails',
+          data: coctail
+        })
+        .then(result => {
+            dispatch({
+                type: 'ADD_COCTAIL_OK'
+            })
+        })
+        .catch(result => {
+            dispatch({
+                type: 'ADD_COCTAIL_FAIL',
+                errors: result.statusText
+            })
+        })
+    }
+}

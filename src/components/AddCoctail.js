@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {connect } from 'react-redux';
 import axios from 'axios';
 
-import Line from './Line.js'
+import Line from './Line.js';
+import { addCoctails } from '../apiActions'
 
 
 class AddCoctail extends Component{
 
-  componentDidMount(){
-    console.log(this.props.lineState);
+  componentDidMount() {
+    console.log(this.props.postState)
   }
 
   addMoreLine(){
@@ -20,7 +21,7 @@ class AddCoctail extends Component{
 
   sendForm(){
     let components = [];
-    for(let i=0;i<this.state.lineCounts;i++){
+    for(let i=0;i<this.props.lineState;i++){
       let currentCoctailComponent = "coctailComponent" + i;
       let currentCoctailComponentCount = "coctailComponentCount" + i;
       let currentCoctailComponentUnit = "coctailComponentUnit" + i;
@@ -44,11 +45,12 @@ class AddCoctail extends Component{
       url: 'http://localhost:3001/coctails',
       data: coctail
     })
-    this.props.onAddCoctail(coctail);
+    this.props.addCoctails(coctail);
     this.props.onResetLineState();
   }
 
   render() {
+      const { passing, errors } = this.props.postState;
       let lines=[];
       for( let i=0; i<this.props.lineState ;i++ ){
         lines.push(i)
@@ -69,7 +71,10 @@ class AddCoctail extends Component{
           <label>Рецепт приготовления</label>
           <textarea id='recipe'></textarea>
           <br/>
-          <input type="button" value="Add coctail" onClick={()=>this.sendForm()}/>
+          <input type="button"
+          className ={ passing ? "inPassing": ""}
+          value="Add coctail"
+          onClick={()=>this.sendForm()}/>
         </form>
       )
   }
@@ -79,12 +84,11 @@ export default connect(
   state => ({
     store: state,
     coctailStore: state.coctailBase,
-    lineState: state.lineReducer
+    lineState: state.lineReducer,
+    postState: state.postState
   }),
   dispatch =>({
-    onAddCoctail: (value) =>{
-      dispatch({ type: 'ADD_COCTAIL', payload: value})
-    },
+    addCoctails: (value)=>addCoctails(value),
     onAddLine: () =>{
       dispatch({ type: 'ADD_LINE'})
     },
