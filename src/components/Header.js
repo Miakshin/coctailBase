@@ -19,7 +19,7 @@ class Header extends React.Component{
 
   handleChangeSearch(event){
     const { dispatch } = this.props;
-    dispatch(onFindCoctail(this.state.value));
+    dispatch(onFindCoctail(event.target.value));
     this.setState({value: event.target.value});
   }
 
@@ -71,7 +71,7 @@ export default connect(
     findedCoctails: ()=>{
       const filtredSoctails =[];
       state.coctailBase.coctails.forEach((el)=>{
-        if(el.name.indexOf(state.searchFilter)!==-1){
+        if(el.name.toLowerCase().indexOf(state.searchFilter.toLowerCase())!==-1){
           filtredSoctails.push(el);
         }
       })

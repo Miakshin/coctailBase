@@ -7,12 +7,29 @@ body {
   font-family: sans-serif;
   height: 100%;
 }
+body:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
 #root{
   background-color: #dbdadc;
   height: 100%;
 }
 #root div{
   height: 100%;
+  float: left;
+  overflow: auto;
+}
+
+.clearFix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 
 .addCoctailForm, .coctailsPage, .home{
@@ -63,7 +80,7 @@ article p{
   margin: 0.3%;
   font-size: 1.01em;
 }
-div#root div.searchWraper{
+div#root nav.navigation div.searchWraper{
   display: block;
   position: absolute;
   width: 45%;
@@ -72,8 +89,10 @@ div#root div.searchWraper{
   background-color: #e5e3e6;
   border: 1px solid white;
 }
-div#root div.searchWraper ul div{
+div#root nav.navigation div.searchWraper ul div.searchedCoctail{
   background-color: #e5e3e6;
+  width: 80%;
+  height: 10%;
 }
 div#root div.searchWraper ul div a{
   color: white;
@@ -86,6 +105,7 @@ div#root div.searchWraper-hiden{
 main.main {
   min-height: 80%;
   width: 100%;
+  overflow: auto;
 }
 /* home page */
 .home{
@@ -129,6 +149,8 @@ footer{
     font-size: 1.3em;
     min-height: 10%;
     max-height: 10%;
+    width: 100%;
+    float: left;
 }
 
 /*AddCoctain component */

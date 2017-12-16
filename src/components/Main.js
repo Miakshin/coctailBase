@@ -6,7 +6,7 @@ import Coctails from './Coctails';
 import AddCoctail from './AddCoctail';
 
 const Main = (props) => (
-  <main className="main">
+  <main className="main clearFix">
       <Route exact path='/' component={Home}/>
       <Route path='/coctails' component={Coctails}/>
       <Route path='/addCoctail' component={AddCoctail}/>
