@@ -14,7 +14,12 @@ class AddCoctail extends Component{
 
   addMoreLine(){
     this.props.onAddLine();
-    console.log(this.props.lineState);
+    this.setState({ lineCounts: this.props.lineState });
+
+  }
+
+  removeLastLine(){
+    this.props.onRemoveLine();
     this.setState({ lineCounts: this.props.lineState });
 
   }
@@ -40,11 +45,11 @@ class AddCoctail extends Component{
       components: components
     }
     console.log(coctail);
-    axios({
-      method: 'post',
-      url: 'http://localhost:3001/coctails',
-      data: coctail
-    })
+    // axios({
+    //   method: 'post',
+    //   url: 'http://localhost:3001/coctails',
+    //   data: coctail
+    // })
     this.props.addCoctails(coctail);
     this.props.onResetLineState();
   }
@@ -67,6 +72,8 @@ class AddCoctail extends Component{
           {lineList}
           <input type="button" className="AddLineBtn"
           onClick={()=>this.addMoreLine()} value="Add a line" />
+          <input type="button" className="AddLineBtn"
+          onClick={()=>this.removeLastLine()} value="Remove line" />
           <br/>
           <label>Рецепт приготовления</label>
           <textarea id='recipe'></textarea>
@@ -91,6 +98,9 @@ export default connect(
     addCoctails: (value)=>addCoctails(value),
     onAddLine: () =>{
       dispatch({ type: 'ADD_LINE'})
+    },
+    onRemoveLine: () =>{
+      dispatch({ type: 'REMOVE_LINE'})
     },
     onResetLineState: ()=>{
       dispatch({ type: 'RESET_LINE_STATE'})

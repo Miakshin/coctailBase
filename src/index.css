@@ -134,8 +134,10 @@ form.addCoctailForm div[class|="line"] label, form.addCoctailForm div[class|="li
 form.addCoctailForm div[class|="line"] input{
   color: #464c63;
 }
-div.line{
+form.addCoctailForm div[class|="line"]{
   margin: 0.3%;
+  display: inline-block;
+  width: 100%;
 }
 form.addCoctailForm input[type=text], form.addCoctailForm input[type=button]{
   color: #464c63;
