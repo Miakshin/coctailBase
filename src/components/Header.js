@@ -10,9 +10,14 @@ class Header extends React.Component{
     super(props);
     this.state = { value: ""};
     this.handleChangeSearch = this.handleChangeSearch.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
   componentDidMount() {
+    // const { dispatch } = this.props;
+    // dispatch(loadCoctails());
+  }
+  handleFocus(){
     const { dispatch } = this.props;
     dispatch(loadCoctails());
   }
@@ -33,7 +38,6 @@ class Header extends React.Component{
             <input type="text" className="inputSearch"
             placeholder="serch coctail..."
             ref={(input)=>{this.searchInput=input}}
-            onChange={this.handleChangeSearch}
             value = "Loading..."
             />
             <SearchWraper findedCoctails={findedNames}/>
@@ -43,7 +47,6 @@ class Header extends React.Component{
     const findedNames = this.props.findedCoctails().map((el)=>
   <div className="searchedCoctail" key={el._id}><a href="#">{el.name}</a></div>
 )
-    console.log(findedNames)
 
 
     return(
@@ -55,6 +58,7 @@ class Header extends React.Component{
         placeholder="serch coctail..."
         ref={(input)=>{this.searchInput=input}}
         onChange={this.handleChangeSearch}
+        onFocus={this.handleFocus}
         value = {this.state.value}
         />
         <SearchWraper className={this.state.value === ""?

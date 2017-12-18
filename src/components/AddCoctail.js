@@ -24,6 +24,19 @@ class AddCoctail extends Component{
 
   }
 
+  removeLineValues(){
+      document.getElementById("coctailName").value='';
+      document.getElementById("recipe").value='';
+
+    for(let i=0;i<this.props.lineState;i++){
+      let currentCoctailComponent = "coctailComponent" + i;
+      let currentCoctailComponentCount = "coctailComponentCount" + i;
+
+      document.getElementById(currentCoctailComponent).value='';
+      document.getElementById(currentCoctailComponentCount).value='';
+    }
+  }
+
   sendForm(){
     let components = [];
     for(let i=0;i<this.props.lineState;i++){
@@ -44,13 +57,8 @@ class AddCoctail extends Component{
       recipe: document.getElementById('recipe').value,
       components: components
     }
-    console.log(coctail);
-    // axios({
-    //   method: 'post',
-    //   url: 'http://localhost:3001/coctails',
-    //   data: coctail
-    // })
     this.props.addCoctails(coctail);
+    this.removeLineValues()
     this.props.onResetLineState();
   }
 
@@ -95,7 +103,28 @@ export default connect(
     postState: state.postState
   }),
   dispatch =>({
-    addCoctails: (value)=>addCoctails(value),
+    addCoctails: (coctail)=>{
+      dispatch({
+          type: 'ADD_COCTAIL_REQUESTED'
+      });
+
+      axios({
+        method: 'post',
+        url: 'http://localhost:3001/coctails',
+        data: coctail
+      })
+      .then(result => {
+          dispatch({
+              type: 'ADD_COCTAIL_OK'
+          })
+      })
+      .catch(result => {
+          dispatch({
+              type: 'ADD_COCTAIL_FAIL',
+              errors: result.statusText
+          })
+      })
+    },
     onAddLine: () =>{
       dispatch({ type: 'ADD_LINE'})
     },

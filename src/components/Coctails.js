@@ -18,7 +18,6 @@ class Coctails extends React.Component{
   }
 
   render(){
-    console.log(this.props.coctailStore);
     const { loading, coctails, errors } = this.props.coctailStore;
     if(loading){return (<div>Loading</div>)}
     if (errors != null) { return (<div>Error!</div>)}
