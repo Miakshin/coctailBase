@@ -4,12 +4,14 @@ import coctailBase from './coctailBase.js';
 import lineReducer from './lineReducer.js';
 import searchFilter from './searchFilter.js';
 import postState from './postState.js';
+import coctailFitching from './coctailFitching.js';
 
 export default combineReducers({
   router: routerReducer,
   coctailBase,
   lineReducer,
   searchFilter,
-  postState
+  postState,
+  coctailFitching
 
 })

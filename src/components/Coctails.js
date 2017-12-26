@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { loadCoctails } from '../apiActions'
@@ -23,9 +24,9 @@ class Coctails extends React.Component{
     if (errors != null) { return (<div>Error!</div>)}
     console.log(coctails);
     const mapingData =  coctails.map((coctail,id) =>
-        <article key={id}>
+          <article key={id}>
           <img src={coctail.img}/>
-          <p>Название: {coctail.name}</p>
+          <p>Название:<Link to={"/Coctails/" + coctail._id}>{coctail.name}</Link></p>
           <p>Компоненты: {
             coctail.components.map((item,id)=>
           <li key={id}>{item}</li>

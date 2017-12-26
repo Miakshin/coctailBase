@@ -17,6 +17,9 @@ app.use(bodyParser.json());
 app.get('/coctails', (req, res)=>{
   db.listCoctails().then(data => res.send(data));
 })
+app.get('/coctails/:id', (req, res)=>{
+  db.listCoctails(req.params.id).then(data => res.send(data));
+})
 app.post('/coctails', (req, res)=> {
   db.createCoctail(req.body).then(data => res.send(data))
  })

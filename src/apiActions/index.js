@@ -9,9 +9,8 @@ export function loadCoctails() {
             type: 'LOAD_COCTAILS_REQUESTED'
         });
 
-        axios.get("http://localhost:3001/coctails")
+        axios.get(url)
         .then(result => {
-            console.log(result.data);
             dispatch({
                 type: 'LOAD_COCTAILS_OK',
                 coctails: result.data
@@ -43,7 +42,7 @@ export function addCoctails(coctail) {
 
         axios({
           method: 'post',
-          url: 'http://localhost:3001/coctails',
+          url: url,
           data: coctail
         })
         .then(result => {
@@ -57,5 +56,35 @@ export function addCoctails(coctail) {
                 errors: result.statusText
             })
         })
+        .catch(result => {
+            dispatch({
+                type: 'LOAD_COCTAIL_FAIL',
+                errors: result.statusText
+            })
+        })
     }
+}
+
+export function loadCoctail(id){
+  return dispatch => {
+    
+      dispatch({
+          type: 'LOAD_COCTAIL_REQUESTED'
+      });
+
+      axios.get(url + "/" + id)
+      .then(result => {
+
+          dispatch({
+              type: 'LOAD_COCTAIL_OK',
+              coctail: result.data
+          })
+      })
+      .catch(result => {
+          dispatch({
+              type: 'LOAD_COCTAIL_FAIL',
+              errors: result.statusText
+          })
+      })
+  }
 }

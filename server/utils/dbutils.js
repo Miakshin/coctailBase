@@ -7,7 +7,12 @@ export function setUpConnection() {
 }
 
 export function listCoctails(id) {
-    return Coctail.find()
+    if(id){
+    return  Coctail.findOne({ '_id': id });
+    }
+    else{
+      return Coctail.find()
+    }
 }
 
 export function createCoctail(data) {
