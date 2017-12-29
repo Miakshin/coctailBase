@@ -67,11 +67,10 @@ export function addCoctails(coctail) {
 
 export function loadCoctail(id){
   return dispatch => {
-    
+
       dispatch({
           type: 'LOAD_COCTAIL_REQUESTED'
       });
-
       axios.get(url + "/" + id)
       .then(result => {
 
