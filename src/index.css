@@ -159,3 +159,13 @@ footer{
 #root div main form.addCoctailForm input.inPassing{
   display: none;
 }
+
+input.formComponent:required:valid {
+  border: 1px green solid ;
+}
+input.formComponent:required:invalid {
+
+}
+.hidden{
+  display: none;
+}

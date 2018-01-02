@@ -7,6 +7,10 @@ import { addCoctails } from '../apiActions'
 
 
 class AddCoctail extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {errors : false}
+  }
 
   componentDidMount() {
     console.log(this.props.postState)
@@ -38,14 +42,35 @@ class AddCoctail extends Component{
   }
 
   sendForm(){
+    let validation = true;
+    function lengthValidation(input){
+      if (input.value.length >= 2){
+        return input.value
+      }else{
+        validation = false
+        return input.value
+      }
+    }
+    function countValidation(input){
+      if (3 >= input.value.length >= 1 & 500 >= input.value > 0){
+        return input.value
+      }else{
+        validation = false
+        return input.value
+      }
+    }
+    function textAdreaIsValid(){
+      return document.getElementById("recipe").value.length >= 10 ?
+      true : false
+    }
     let components = [];
     for(let i=0;i<this.props.lineState;i++){
       let currentCoctailComponent = "coctailComponent" + i;
       let currentCoctailComponentCount = "coctailComponentCount" + i;
       let currentCoctailComponentUnit = "coctailComponentUnit" + i;
 
-      let coctailComponent = document.getElementById(currentCoctailComponent).value;
-      let coctailComponentCount = document.getElementById(currentCoctailComponentCount).value;
+      let coctailComponent = lengthValidation(document.getElementById(currentCoctailComponent));
+      let coctailComponentCount = countValidation(document.getElementById(currentCoctailComponentCount));
       let coctailComponentUnit = document.getElementById(currentCoctailComponentUnit).value;
 
       let component = `${coctailComponent} ${coctailComponentCount}${coctailComponentUnit}`
@@ -57,9 +82,15 @@ class AddCoctail extends Component{
       recipe: document.getElementById('recipe').value,
       components: components
     }
-    this.props.addCoctails(coctail);
-    this.removeLineValues()
-    this.props.onResetLineState();
+    if(validation === true & textAdreaIsValid()){
+      if(document.getElementById("recipe").value.length>=10){
+          this.props.addCoctails(coctail);
+          this.removeLineValues();
+          this.props.onResetLineState();
+          this.setState({errors : false})}
+      }else{
+        this.setState({errors: true})
+      }
   }
 
   render() {
@@ -75,8 +106,12 @@ class AddCoctail extends Component{
         <form className="addCoctailForm">
           <h1>Add a new coctail</h1>
           <label>Название:</label>
-          <input type="text" name="name" placeholder="Введите название"
-          id='coctailName'/>
+          <input type="text" name="name"
+          placeholder="Введите название"
+          id="coctailName"
+          className="formComponent"
+          pattern="[A-Za-zА-Яа-яЁё0-9_-]+${3,}"
+          required/>
           {lineList}
           <input type="button" className="AddLineBtn"
           onClick={()=>this.addMoreLine()} value="Add a line" />
@@ -84,12 +119,21 @@ class AddCoctail extends Component{
           onClick={()=>this.removeLastLine()} value="Remove line" />
           <br/>
           <label>Рецепт приготовления</label>
-          <textarea id='recipe'></textarea>
+          <textarea id='recipe'
+          pattern="[A-Za-zА-Яа-яЁё0-9_-]+${10,}"
+          required>
+          </textarea>
           <br/>
           <input type="button"
           className ={ passing ? "inPassing": ""}
           value="Add coctail"
           onClick={()=>this.sendForm()}/>
+          <p className={this.state.errors === false ?
+         "hidden" : ""} >
+         Название коктейля и компонента должно быть не короче 2 символов<br/>
+         Длинна Рецепта должна быть не меньше 10 символов<br/>
+         Не забудьте указать количество компонентов
+          </p>
         </form>
       )
   }

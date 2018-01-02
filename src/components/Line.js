@@ -6,11 +6,17 @@ function Line(props){
     <input type="text"
     placeholder="введите компонент"
     id={"coctailComponent" + props.id}
+    className = "formComponent"
+    pattern="[A-Za-zА-Яа-яЁё0-9_-]+${2,}"
+    required
     />
     <label>Количество</label>
     <input type="number"
+    className = "formComponent"
     min="1" max="500"
-    id={"coctailComponentCount" + props.id}/>
+    pattern="[0-9]{1,3}"
+    id={"coctailComponentCount" + props.id}
+    required/>
     <select id={"coctailComponentUnit" + props.id}>
       <option>Мл</option>
       <option>Г</option>
