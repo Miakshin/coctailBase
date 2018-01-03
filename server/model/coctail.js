@@ -6,7 +6,8 @@ var CoctailsSchema = new Schema({
  name: String,
  components: Array,
  recipe: String,
- createdAt: Date
+ createdAt: Date,
+ img: { data: Buffer, contentType: String }
 });
 //export our module to use in server.js
 module.exports = mongoose.model('Coctail', CoctailsSchema);

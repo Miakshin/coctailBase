@@ -169,3 +169,8 @@ input.formComponent:required:invalid {
 .hidden{
   display: none;
 }
+
+#uploadImg{
+  max-width: 200px;
+  max-height: 200px;
+}

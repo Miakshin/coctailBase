@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect } from 'react-redux';
 import axios from 'axios';
+import fs from 'fs'
 
 import Line from './Line.js';
 import { addCoctails } from '../apiActions'
@@ -41,6 +42,12 @@ class AddCoctail extends Component{
     }
   }
 
+  onSetImg(){
+    let uploadImg = document.getElementById("uploadImg");
+    let uploadImgSorce = window.URL.createObjectURL(document.getElementById("photoloader").files[0]);
+    uploadImg.src = uploadImgSorce;
+  }
+
   sendForm(){
     let validation = true;
     function lengthValidation(input){
@@ -52,7 +59,7 @@ class AddCoctail extends Component{
       }
     }
     function countValidation(input){
-      if (3 >= input.value.length >= 1 & 500 >= input.value > 0){
+      if (input.value.length > 0 && input.value.length <=3 && input.value > 0 && input.value <=500){
         return input.value
       }else{
         validation = false
@@ -77,10 +84,16 @@ class AddCoctail extends Component{
       components.push(component);
       }
 
+    let imgPath = document.getElementById("uploadImg").src;
+    let contentType = document.getElementById("photoloader").files[0].name
+
+    // Нужно взять путь файла из картинки и расширение из инпута загрузки и отправить формой
+
     let coctail = {
       name: document.getElementById('coctailName').value,
       recipe: document.getElementById('recipe').value,
-      components: components
+      components: components,
+      img: {data: fs.readFileSync(imgPath), contentType: ""}
     }
     if(validation === true & textAdreaIsValid()){
       if(document.getElementById("recipe").value.length>=10){
@@ -124,6 +137,10 @@ class AddCoctail extends Component{
           required>
           </textarea>
           <br/>
+          <input type="file" id="photoloader" name="photo" accept=".jpg, .jpeg, .png" onChange={()=>this.onSetImg()}/>
+          <img id="uploadImg" src = "http://s1.iconbird.com/ico/1012/DownToEarth/w512h5121350592377G12LoadDown.png" />
+          <button onClick={()=>console.log(document.getElementById("photoloader").files[0].name)}>Показать</button>
+
           <input type="button"
           className ={ passing ? "inPassing": ""}
           value="Add coctail"

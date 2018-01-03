@@ -20,7 +20,8 @@ export function createCoctail(data) {
         name: data.name,
         components: data.components,
         recipe: data.recipe,
-        createdAt: new Date()
+        createdAt: new Date(),
+        img : {data: data.img.data, contentType: data.img.contentType}
     });
 
     return coctail.save();
@@ -28,4 +29,14 @@ export function createCoctail(data) {
 
 export function deleteCoctail(id) {
     return Coctail.findById(id).remove();
+}
+
+export function getCoctailByName(name) {
+    return Coctail.find({name: `/$name/i`})
+    .limit(5)
+    .exec(function(err, coctail) {
+        if (err) throw err;
+
+        console.log(coctail);
+    });
 }

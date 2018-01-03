@@ -20,6 +20,9 @@ app.get('/coctails', (req, res)=>{
 app.get('/coctails/:id', (req, res)=>{
   db.listCoctails(req.params.id).then(data => res.send(data));
 })
+app.get('/coctails/find/:name', (req, res)=>{
+  db.getCoctailByName(req.params.name).then(data => res.send(data));
+})
 app.post('/coctails', (req, res)=> {
   db.createCoctail(req.body).then(data => res.send(data))
  })

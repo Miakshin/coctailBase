@@ -45,7 +45,10 @@ class Header extends React.Component{
     if (errors != null) { return (<div>Error!</div>)}
 
     const findedNames = this.props.findedCoctails().map((el)=>
-  <div className="searchedCoctail" key={el._id}><a href="#">{el.name}</a></div>
+  <div className="searchedCoctail" key={el._id}
+  onClick={()=>this.setState({value: ""})}>
+  <Link to={"/Coctails/" + el._id} >{el.name}</Link>
+  </div>
 )
 
 
@@ -79,7 +82,6 @@ export default connect(
           filtredSoctails.push(el);
         }
       })
-      console.log(filtredSoctails);
       return filtredSoctails
     }
   })
