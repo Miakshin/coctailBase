@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import SearchWraper from './SearchWraper';
-import { loadCoctails, onFindCoctail } from '../apiActions';
+import { loadCoctails, onFindCoctail } from '../../apiActions';
 
 class Header extends React.Component{
   constructor(props) {

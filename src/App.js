@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {connect } from 'react-redux';
 
-import Main from './components/Main';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Main from './components/Main/Main';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 class App extends Component {
   render(){

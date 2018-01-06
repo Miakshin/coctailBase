@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import {connect } from 'react-redux';
 import axios from 'axios';
-import fs from 'fs'
 
 import Line from './Line.js';
-import { addCoctails } from '../apiActions'
+import { addCoctails } from '../../apiActions';
 
 
 class AddCoctail extends Component{
@@ -85,7 +84,10 @@ class AddCoctail extends Component{
       }
 
     let imgPath = document.getElementById("uploadImg").src;
-    let contentType = document.getElementById("photoloader").files[0].name
+    let img = document.getElementById("photoloader").value;
+    let contentType = document.getElementById("photoloader").files[0].type;
+
+    console.log(imgPath);
 
     // Нужно взять путь файла из картинки и расширение из инпута загрузки и отправить формой
 
@@ -93,7 +95,7 @@ class AddCoctail extends Component{
       name: document.getElementById('coctailName').value,
       recipe: document.getElementById('recipe').value,
       components: components,
-      img: {data: fs.readFileSync(imgPath), contentType: ""}
+      img: {data: imgPath , contentType: contentType}
     }
     if(validation === true & textAdreaIsValid()){
       if(document.getElementById("recipe").value.length>=10){
@@ -102,6 +104,7 @@ class AddCoctail extends Component{
           this.props.onResetLineState();
           this.setState({errors : false})}
       }else{
+        console.log(coctail);
         this.setState({errors: true})
       }
   }

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import fs from 'fs';
 
 import Coctail from '../model/coctail';
 
@@ -21,7 +22,8 @@ export function createCoctail(data) {
         components: data.components,
         recipe: data.recipe,
         createdAt: new Date(),
-        img : {data: data.img.data, contentType: data.img.contentType}
+        img :  {data: fs.readFileSync(data.img.data, 'base64'),
+        contentType: data.img.contentType}
     });
 
     return coctail.save();
