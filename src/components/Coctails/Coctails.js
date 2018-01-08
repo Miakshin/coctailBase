@@ -25,7 +25,7 @@ class Coctails extends React.Component{
     console.log(coctails);
     const mapingData =  coctails.map((coctail,id) =>
           <article key={id}>
-          <img src={coctail.img}/>
+          <img src={coctail.imgSrc ? coctail.imgSrc : ''} alt="coctail photo" />
           <p>Название:<Link to={"/Coctails/" + coctail._id}>{coctail.name}</Link></p>
           <p>Компоненты: {
             coctail.components.map((item,id)=>

@@ -29,22 +29,33 @@ class AddCoctail extends Component{
   }
 
   removeLineValues(){
-      document.getElementById("coctailName").value='';
-      document.getElementById("recipe").value='';
-
-    for(let i=0;i<this.props.lineState;i++){
-      let currentCoctailComponent = "coctailComponent" + i;
-      let currentCoctailComponentCount = "coctailComponentCount" + i;
-
-      document.getElementById(currentCoctailComponent).value='';
-      document.getElementById(currentCoctailComponentCount).value='';
-    }
+    const defaultImgSrc = "http://s1.iconbird.com/ico/1012/DownToEarth/w512h5121350592377G12LoadDown.png"
+    let form = document.getElementById("addCoctailForm");
+    form.reset();
+    document.getElementById("coctailName").value='';
+    //   document.getElementById("recipe").value='';
+    //   document.getElementById("uploadImg").src = defaultImgSrc;
+    //   document.getElementById("photoloader").files = [];
+    //
+    // for(let i=0;i<this.props.lineState;i++){
+    //   let currentCoctailComponent = "coctailComponent" + i;
+    //   let currentCoctailComponentCount = "coctailComponentCount" + i;
+    //
+    //   document.getElementById(currentCoctailComponent).value='';
+    //   document.getElementById(currentCoctailComponentCount).value='';
+    // }
   }
 
   onSetImg(){
-    let uploadImg = document.getElementById("uploadImg");
-    let uploadImgSorce = window.URL.createObjectURL(document.getElementById("photoloader").files[0]);
-    uploadImg.src = uploadImgSorce;
+    let uploadedImg = document.getElementById("uploadImg"); //находим картинку куда будет подгружать загруженную картинку
+    let uploadingImg = document.getElementById("photoloader").files[0]; //достаём файл из формы
+
+    var reader = new FileReader();
+      reader.onloadend = function() {
+        uploadedImg.src =  reader.result;
+      }
+      reader.readAsDataURL(uploadingImg)
+
   }
 
   sendForm(){
@@ -83,11 +94,7 @@ class AddCoctail extends Component{
       components.push(component);
       }
 
-    let imgPath = document.getElementById("uploadImg").src;
-    let img = document.getElementById("photoloader").value;
-    let contentType = document.getElementById("photoloader").files[0].type;
-
-    console.log(imgPath);
+    let imgSrc = document.getElementById("uploadImg").src;
 
     // Нужно взять путь файла из картинки и расширение из инпута загрузки и отправить формой
 
@@ -95,7 +102,7 @@ class AddCoctail extends Component{
       name: document.getElementById('coctailName').value,
       recipe: document.getElementById('recipe').value,
       components: components,
-      img: {data: imgPath , contentType: contentType}
+      imgSrc: imgSrc
     }
     if(validation === true & textAdreaIsValid()){
       if(document.getElementById("recipe").value.length>=10){
@@ -119,7 +126,7 @@ class AddCoctail extends Component{
       <Line id={id} key={id}/>
       )
     return(
-        <form className="addCoctailForm">
+        <form className="addCoctailForm" id="addCoctailForm">
           <h1>Add a new coctail</h1>
           <label>Название:</label>
           <input type="text" name="name"

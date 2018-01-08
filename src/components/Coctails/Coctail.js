@@ -29,6 +29,7 @@ class Coctail extends React.Component{
 
     return (
       <article key={coctail._id}>
+      <img src={cictail.imgSrc ? cictail.imgSrc : ''} alt="coctail photo" />
       <h1>{coctail.name}</h1>
       <div>
         <ul>{

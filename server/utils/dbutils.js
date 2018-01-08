@@ -22,8 +22,7 @@ export function createCoctail(data) {
         components: data.components,
         recipe: data.recipe,
         createdAt: new Date(),
-        img :  {data: fs.readFileSync(data.img.data, 'base64'),
-        contentType: data.img.contentType}
+        imgSrc :  data.imgSrc
     });
 
     return coctail.save();
