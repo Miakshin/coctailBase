@@ -4,7 +4,7 @@ export default function findedCoctails(state = defaultState, action) {
   action.type
 
     if (action.type==="GET_COCTAILS_REQUESTED"){
-      return { loading: true };
+      return { loading: true, findedCoctails : state.findedCoctails };
     }
     else if(action.type==="GET_COCTAILS_OK"){
       return { loading: false, findedCotails: action.coctails, errors: null };
