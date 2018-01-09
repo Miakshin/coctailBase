@@ -3,34 +3,41 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import SearchWraper from './SearchWraper';
-import { loadCoctails, onFindCoctail } from '../../apiActions';
+import { loadCoctails, getCoctailByName } from '../../apiActions';
 
 class Header extends React.Component{
   constructor(props) {
     super(props);
     this.state = { value: ""};
     this.handleChangeSearch = this.handleChangeSearch.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
   }
 
-  componentDidMount() {
-    // const { dispatch } = this.props;
-    // dispatch(loadCoctails());
-  }
-  handleFocus(){
-    const { dispatch } = this.props;
-    dispatch(loadCoctails());
-  }
 
   handleChangeSearch(event){
     const { dispatch } = this.props;
-    dispatch(onFindCoctail(event.target.value));
+    dispatch(getCoctailByName(event.target.value));
     this.setState({value: event.target.value});
   }
 
 
   render(){
-    const { loading, coctails, errors } = this.props.coctailStore;
+    const getFindedCoctail = ()=>{
+      if(this.props.findedCoctails.findedCotails){
+        return (
+        this.props.findedCoctails.findedCotails.map((el)=>
+        <div className="searchedCoctail" key={el._id}
+        onClick={()=>this.setState({value: ""})}>
+        <img src={el.imgSrc ? el.imgSrc : ''} alt="coctail.photo"
+        width="40px" height="40px"/>
+        <Link to={"/Coctails/" + el._id} >{el.name}</Link>
+        </div>))
+      }else{
+        return []
+      }
+    }
+
+    let findedCoctailsByName = getFindedCoctail();
+    const { loading, findedCotails, errors } = this.props.findedCoctails;
     if(loading){return (      <nav className="navigation">
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/Coctails'>Coctails</Link></li>
@@ -38,18 +45,13 @@ class Header extends React.Component{
             <input type="text" className="inputSearch"
             placeholder="serch coctail..."
             ref={(input)=>{this.searchInput=input}}
-            value = "Loading..."
+            value = {this.state.value}
             />
-            <SearchWraper findedCoctails={findedNames}/>
+            <SearchWraper findedCoctails={findedCoctailsByName}/>
           </nav>)}
     if (errors != null) { return (<div>Error!</div>)}
 
-    const findedNames = this.props.findedCoctails().map((el)=>
-  <div className="searchedCoctail" key={el._id}
-  onClick={()=>this.setState({value: ""})}>
-  <Link to={"/Coctails/" + el._id} >{el.name}</Link>
-  </div>
-)
+
 
 
     return(
@@ -61,12 +63,11 @@ class Header extends React.Component{
         placeholder="serch coctail..."
         ref={(input)=>{this.searchInput=input}}
         onChange={this.handleChangeSearch}
-        onFocus={this.handleFocus}
         value = {this.state.value}
         />
         <SearchWraper className={this.state.value === ""?
       "searchWraper-hiden" : "searchWraper"}
-        findedCoctails={findedNames}/>
+        findedCoctails={findedCoctailsByName}/>
       </nav>
     )
   }
@@ -74,15 +75,6 @@ class Header extends React.Component{
 
 export default connect(
   state => ({
-    coctailStore: state.coctailBase,
-    findedCoctails: ()=>{
-      const filtredSoctails =[];
-      state.coctailBase.coctails.forEach((el)=>{
-        if(el.name.toLowerCase().indexOf(state.searchFilter.toLowerCase())!==-1){
-          filtredSoctails.push(el);
-        }
-      })
-      return filtredSoctails
-    }
+    findedCoctails: state.findedCoctails
   })
 )(Header);

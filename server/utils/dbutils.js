@@ -33,11 +33,8 @@ export function deleteCoctail(id) {
 }
 
 export function getCoctailByName(name) {
-    return Coctail.find({name: `/$name/i`})
-    .limit(5)
+    return Coctail.find({name: new RegExp('^' + name, 'i')})
     .exec(function(err, coctail) {
         if (err) throw err;
-
-        console.log(coctail);
     });
 }

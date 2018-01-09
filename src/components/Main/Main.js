@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import Home from '../Home/Home';
-import CoctailRout from '../Coctails/Coctails';
+import CoctailRout from '../Coctails/CoctailRout';
 import AddCoctail from '../AddCoctail/AddCoctail';
 
 const Main = (props) => (
