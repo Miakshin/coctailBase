@@ -37,17 +37,26 @@ div.homeWrapper p{
   border-radius: 15px;
   text-indent: 2%;
   line-height: 1.3em;
-  font-size: 1.1em;
+  font-size: 1.5em;
 }
-
+div.homeWrapper p span{
+  display: block;
+  text-indent: 2%;
+}
+div.homeWrapper p h2{
+  font-size: 1.4em;
+  line-height: 1.1em;
+}
 div.homeWrapper p a{
   display: block;
   text-decoration: none;
   border-radius: 5px;
   background-color: #efbe4c;
   color: white;
+  width: 30%;
+  height: 10%;
   text-align: center;
-  margin-top: 2%;
+  margin-top: 0%;
   padding: 10px;
 }
 

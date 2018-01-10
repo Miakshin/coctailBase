@@ -2,4 +2,59 @@ footer.footer{
   background: #3a3a3a;
   color: white;
   min-height: 10%;
+  direction: column;
+  padding: 0 6% 2% 6%;
+}
+footer.footer p{
+  display: block;
+  flex-grow: 1;
+  width: 100%;
+  padding:  2% 2% 0 2%;
+  margin: 0;
+  font-size: 0.9em;
+}
+
+footer.footer address{
+  display: flex;
+  direction: row;
+  justify-content: center;
+  align-items: center;
+}
+footer.footer address p{
+  flex-basis: max-content;
+}
+footer.footer address div.links{
+  display: flex;
+  width: 50%;
+  direction: row;
+  justify-content: flex-start;
+}
+footer.footer address div.links a{
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-left: 3%;
+  border-radius: 50%;
+}
+
+footer.footer address div.links a.link-to-git{
+  background-color: white;
+  background-image: url("./img/git.png");
+  background-size: 86%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+footer.footer address div.links a.link-to-fb{
+  background-color: white;
+  background-image: url("./img/fb.png");
+  background-size: 86%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+footer.footer address div.links a.link-to-dou{
+  background-color: white;
+  background-image: url("./img/dou.png");
+  background-size: 86%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
