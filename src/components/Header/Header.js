@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import SearchWraper from './SearchWraper';
 import { loadCoctails, getCoctailByName } from '../../apiActions';
 
+import './Header.css';
+
 class Header extends React.Component{
   constructor(props) {
     super(props);
@@ -41,21 +43,29 @@ class Header extends React.Component{
     if (errors != null) { return (<div>Error!</div>)}
 
     return(
-      <nav className="navigation">
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/Coctails'>Coctails</Link></li>
-        <li><Link to='/AddCoctail'>Add coctail</Link></li>
-        <input type="text" className="inputSearch"
-        placeholder="serch coctail..."
-        ref={(input)=>{this.searchInput=input}}
-        onChange={this.handleChangeSearch}
-        value = {this.state.value}
-        />
+      <header className="header">
+      <div className="label"><Link to='/'><img src="img/logo.png"/>
+      </Link><h1>Coctail Base</h1></div>
+      <div className="wrapper">
+        <nav className="navigation">
+          <Link to='/'>Home</Link>
+          <Link to='/Coctails'>Coctails</Link>
+          <Link to='/AddCoctail'>Add coctail</Link>
+        </nav>
+        <div className="search">
+          <input type="text" className="inputSearch"
+          placeholder="serch coctail..."
+          ref={(input)=>{this.searchInput=input}}
+          onChange={this.handleChangeSearch}
+          value = {this.state.value}
+          />
+        </div>
         <SearchWraper className={this.state.value === ""?
-      "searchWraper-hiden" : "searchWraper"}
-        findedCoctails={findedCoctailsByName}
-        loading = {loading}/>
-      </nav>
+        "searchWraper-hiden" : "searchWraper"}
+          findedCoctails={findedCoctailsByName}
+          loading = {loading}/>
+      </div>
+      </header>
     )
   }
 }

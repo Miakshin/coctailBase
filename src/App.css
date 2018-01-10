@@ -1,0 +1,8 @@
+#app{
+  background-image: url("./img/background.png");
+  background-size: 20%;
+  background-repeat: repeat-x;
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+}

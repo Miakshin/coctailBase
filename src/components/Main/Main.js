@@ -5,8 +5,10 @@ import Home from '../Home/Home';
 import CoctailRout from '../Coctails/CoctailRout';
 import AddCoctail from '../AddCoctail/AddCoctail';
 
+import './Main.css';
+
 const Main = (props) => (
-  <main>
+  <main className="main">
       <Route exact path='/' component={Home}/>
       <Route path='/coctails' component={CoctailRout}/>
       <Route path='/addCoctail' component={AddCoctail}/>

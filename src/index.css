@@ -14,10 +14,11 @@ body:after {
   clear: both;
   visibility: hidden;
 }
-#root{
-  background-color: #dbdadc;
+ #root{
+  background-color: white;
   height: 100%;
 }
+/*
 #root div{
   height: 100%;
   float: left;
@@ -35,10 +36,10 @@ body:after {
 .addCoctailForm, .coctailsPage, .home{
   color: #464c63;
     font-size: 1.1em;
-}
+} */
 
 /* navigation */
-nav.navigation{
+/* nav.navigation{
   background-color: #e5e3e6;
   min-width: 10%;
 
@@ -99,16 +100,16 @@ div#root div.searchWraper ul div a{
 }
 div#root div.searchWraper-hiden{
   display: none;
-}
+} */
 
 /* Main */
-main.main {
-  min-height: 80%;
+/*main.main {
+   min-height: 80%;
   width: 100%;
   overflow: auto;
-}
+} */
 /* home page */
-.home{
+/* .home{
   padding: 0.3%;
 }
 
@@ -122,10 +123,10 @@ main.main {
 .home h1, .addCoctailForm h1{
   text-align: center;
   font-size: 1.7em;
-}
+} */
 
 /* Footer */
-form.addCoctailForm{
+/* form.addCoctailForm{
   margin-left: 0.7%;
 }
 form.addCoctailForm div[class|="line"] label, form.addCoctailForm div[class|="line"] input{
@@ -141,10 +142,10 @@ form.addCoctailForm div[class|="line"]{
 }
 form.addCoctailForm input[type=text], form.addCoctailForm input[type=button]{
   color: #464c63;
-}
+} */
 /* Footer */
 
-footer{
+/* footer{
     background-color: #e5e3e6;
     padding: 0.2%;
     color: #464c63;
@@ -153,10 +154,10 @@ footer{
     max-height: 10%;
     width: 100%;
     float: left;
-}
+} */
 
 /*AddCoctain component */
-#root div main form.addCoctailForm input.inPassing{
+/* #root div main form.addCoctailForm input.inPassing{
   display: none;
 }
 
@@ -173,4 +174,4 @@ input.formComponent:required:invalid {
 #uploadImg{
   max-width: 200px;
   max-height: 200px;
-}
+} */

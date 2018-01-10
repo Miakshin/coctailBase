@@ -22,7 +22,9 @@ class Coctails extends React.Component{
     const { loading, coctails, errors } = this.props.coctailStore;
     if(loading){return (<div>Loading</div>)}
     if (errors != null) { return (<div>Error!</div>)}
-    console.log(coctails);
+    if(!coctails){
+      return (<div><p>No one coctail isn`t finded. Please, upload some coctails</p></div>)
+    }
     const mapingData =  coctails.map((coctail,id) =>
           <article key={id}>
           <img src={coctail.imgSrc ? coctail.imgSrc : ''} alt="coctail photo" />
