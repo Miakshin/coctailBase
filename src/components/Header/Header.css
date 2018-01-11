@@ -31,6 +31,7 @@ header.header div.wrapper{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: static;
 }
 
 header.header div.wrapper nav{
@@ -72,8 +73,41 @@ header.header div.wrapper nav a:hover {
   background-color: rgba(0,0,0, 0.6);
 }
 
-
-
 div.searchWraper-hiden{
   display: none;
+
+}
+
+div.searchWraper{
+  position: absolute;
+  right: 6%;
+  top: 8.5%;
+  background: white;
+  width: 40%;
+  box-shadow: -2px 3px 4px #3a3a3a;
+  color: #3a3a3a;
+  max-height: 180px;
+}
+
+
+div.searchWraper div{
+  height: 36px;
+  padding: auto 0 auto 10%;
+}
+
+div.searchWraper div.searchedCoctail img{
+  height: 34px;
+  width: auto;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+div.searchWraper div.searchedCoctail a{
+  color: #3a3a3a;
+  text-decoration: none;
+  padding: 2px;
+  font-size: 1.1em;
+  vertical-align: super;
+  line-height: 1.5;
+
 }

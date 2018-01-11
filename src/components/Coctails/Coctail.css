@@ -1,0 +1,67 @@
+article.coctailPage{
+  margin: 0 6%;
+  background: url("./img/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 3%;
+  border: 15px solid white;
+}
+
+article.coctailPage div.flex{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin: 1%;
+}
+
+
+article.coctailPage div.flex img{
+  width: 50%;
+  height: auto;
+  border-radius: 3%;
+  flex-grow: 4;
+  margin: 1%;
+}
+
+article.coctailPage div.flex div.flexWrapper{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: stretch;
+  margin: 1%;
+  justify-content: flex-start;
+}
+
+article.coctailPage h1, article.coctailPage div.componentWrapper, article.coctailPage p{
+  display: inline-block;
+  background-color: rgba(0,0,0, 0.6);
+  color: white;
+  padding: 3%;
+  border-radius: 15px;
+  text-indent: 2%;
+}
+article.coctailPage div.componentWrapper ul{
+  list-style-type: decimal;
+}
+article.coctailPage div.componentWrapper h2, article.coctailPage div.flexWrapper h1{
+  text-align: center;
+}
+article.coctailPage p{
+  width: 90%;
+  margin: 0 2% 2% 2%;
+}
+article.coctailPage p h3{
+  margin: 0;
+}
+article.coctailPage p pre{
+  white-space: pre-wrap;
+  text-indent: 2%;
+  font-family: sans-serif;
+}
+
+article.coctailPage footer{
+  text-align: right;
+  margin: 0 2% 2% 0;
+  color:white;
+  text-shadow: 1px 1px #3a3a3a;
+}

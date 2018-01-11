@@ -2,6 +2,8 @@ import React from 'react';
 import { loadCoctail } from '../../apiActions';
 import { connect } from 'react-redux';
 
+import "./Coctail.css"
+
 class Coctail extends React.Component{
 
   componentWillMount(){
@@ -18,18 +20,23 @@ class Coctail extends React.Component{
     if (errors !== null) { return (<div>Error!</div>)}
     if (coctail === []){return(<div> loading...</div>)}
     if (coctail){return (
-      <article key={coctail._id}>
-      <img src={coctail.imgSrc ? coctail.imgSrc : ''} alt="coctail photo" />
-      <h1>{coctail.name}</h1>
-      <div>
-        <ul>{
-            coctail.components ? coctail.components.map((conponent, id)=>
-          <li key={id}>
-          {conponent}</li>) : ""}
-        </ul>
-      </div>
-      <p>Рецепт:{coctail.recipe}</p>
-      <footer><span>Добавлен {coctail.createdAt}</span></footer>
+      <article className="coctailPage" key={coctail._id}>
+        <div className="flex">
+          <img src={coctail.imgSrc ? coctail.imgSrc : ''} alt="coctail photo" />
+          <div className="flexWrapper">
+            <h1>{coctail.name}</h1>
+            <div className="componentWrapper">
+              <h2>you will need:</h2>
+              <ul>{
+                  coctail.components ? coctail.components.map((conponent, id)=>
+                <li key={id}>
+                {conponent}</li>) : ""}
+              </ul>
+            </div>
+          </div>
+        </div>
+      <p><h3> How to prepare: </h3><br/><pre>{coctail.recipe}</pre></p>
+      <footer><span>Added: {coctail.createdAt}</span></footer>
       </article>
     )}
 

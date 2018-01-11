@@ -30,7 +30,7 @@ class Header extends React.Component{
         <div className="searchedCoctail" key={el._id}
         onClick={()=>this.setState({value: ""})}>
         <img src={el.imgSrc ? el.imgSrc : ''} alt="coctail.photo"
-        width="40px" height="40px"/>
+        />
         <a href={"/Coctails/" + el._id} >{el.name}</a>
         </div>))
       }else{

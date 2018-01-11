@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { loadCoctails } from '../../apiActions'
 
+import "./Coctails.css"
+
 
 class Coctails extends React.Component{
   constructor(props) {
@@ -38,7 +40,7 @@ class Coctails extends React.Component{
           </article>
         )
     return(
-      <div className="coctailsPage">{mapingData}</div>
+      <div className="coctailsListPage">{mapingData}</div>
 
     )
   }
