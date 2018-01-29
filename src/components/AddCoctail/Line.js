@@ -16,9 +16,12 @@ function Line(props){
     id={"coctailComponentCount" + props.id}
     required/>
     <select id={"coctailComponentUnit" + props.id}>
-      <option>Мл</option>
-      <option>Г</option>
-      <option>Шт.</option>
+      <option> ml</option>
+      <option> g</option>
+      <option> thing</option>
+      <option> oz</option>
+      <option> dash</option>
+      <option> pice</option>
     </select>
   </div>
   )

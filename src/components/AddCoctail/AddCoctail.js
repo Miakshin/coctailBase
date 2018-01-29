@@ -7,6 +7,21 @@ import { addCoctails } from '../../apiActions';
 
 import "./AddCoctail.css";
 
+function printErrorMasage(err){
+  
+  if(!document.getElementsByClassName("errorSpan")[0]){
+
+  let perent = document.getElementById("addCoctailForm");
+  let resetBtn =  document.getElementsByClassName("AddLineBtn")[1];
+  let span = document.createElement("span");
+
+  span.innerHTML = err;
+  span.className = "errorSpan";
+  perent.insertBefore(span, resetBtn.nextSibling);
+  // console.log(document.getElementsByClassName("errorSpan")[0]);
+  setTimeout(()=>{perent.removeChild(document.getElementsByClassName("errorSpan")[0])}, 5000);
+  }
+}
 
 class AddCoctail extends Component{
   constructor(props) {
@@ -19,14 +34,15 @@ class AddCoctail extends Component{
   }
 
   addMoreLine(){
-    this.props.onAddLine();
-    this.setState({ lineCounts: this.props.lineState });
-
+    this.props.lineState < 12 ?
+    this.props.onAddLine() :
+    printErrorMasage('Too much components')
   }
 
   removeLastLine(){
-    this.props.onRemoveLine();
-    this.setState({ lineCounts: this.props.lineState });
+    this.props.lineState > 2 ?
+    this.props.onRemoveLine() :
+    printErrorMasage('Minimal amount of lines');
 
   }
 
@@ -134,27 +150,35 @@ class AddCoctail extends Component{
           placeholder="Coctail colls ..."
           id="coctailName"
           className="formComponent"
-          pattern="[A-Za-zА-Яа-яЁё0-9_-]+${3,}"
+          pattern="[A-Za-zА-Яа-яЁё0-9_-]+${3}"
           required/>
-          <div className="lineList">{lineList}</div>
+          <div className="lineList">
+            {lineList}
+          </div>
           <input type="button" className="AddLineBtn"
           onClick={()=>this.addMoreLine()} value="Add a line" />
           <input type="button" className="AddLineBtn"
           onClick={()=>this.removeLastLine()} value="Remove line" />
           <br/>
           <textarea id='recipe'
-          pattern="[A-Za-zА-Яа-яЁё0-9_-]+${10,}"
+          pattern="[A-Za-zА-Яа-яЁё0-9_-]+${10}"
           required
           placeholder="input recipe of this coctail!">
           </textarea>
           <br/>
-          <input type="file" id="photoloader" name="photo" accept=".jpg, .jpeg, .png" onChange={()=>this.onSetImg()}/>
-          <img id="uploadImg" src = "./img/default.png" />
-
-          <input type="button"
-          className ={ passing ? "inPassing": ""}
-          value="Add coctail"
-          onClick={()=>this.sendForm()}/>
+          <div>
+            <div id="imgPicker">
+              <input type="button" value="select file" onClick={()=>{
+                document.getElementById("photoloader").click();
+              }}/>
+              <input type="file" id="photoloader" name="photo" accept=".jpg, .jpeg, .png" onChange={()=>this.onSetImg()}/>
+              <img id="uploadImg" src = "./img/default.png" />
+            </div>
+            <input type="button"
+            className ={ passing ? "inPassing": ""}
+            value="Add coctail"
+            onClick={()=>this.sendForm()}/>
+          </div>
           <p className={this.state.errors === false ?
          "hidden" : ""} >
          Название коктейля и компонента должно быть не короче 2 символов<br/>

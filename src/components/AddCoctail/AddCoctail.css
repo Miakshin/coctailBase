@@ -12,7 +12,7 @@ form#addCoctailForm h1{
   color: #efbe4c;
   text-shadow: 1px 1px #3a3a3a;
   text-align: center;
-  margin: 2% auto;
+  margin: 0 auto 2% auto;
 }
 form#addCoctailForm div.lineList{
   display:flex;
@@ -34,7 +34,8 @@ form#addCoctailForm div.lineList div[class^="line"] input[type="number"]{
 
 form#addCoctailForm div.lineList div[class^="line"] select{
   flex-grow: 1;
-  height: 46px;
+  height: 44px;
+  text-indent: 2%;
 }
 
 form#addCoctailForm input{
@@ -45,12 +46,14 @@ form#addCoctailForm input[type="text"],
 form#addCoctailForm input[type="number"],
 form#addCoctailForm select, form#addCoctailForm textarea{
   background-color: rgba(0,0,0, 0.6);
-  color: white;
+  color: #dca14f;
+  border: 1px solid #dca14f;
+  text-indent: 1em;
 }
 form#addCoctailForm input[type="text"]:focus,
 form#addCoctailForm input[type="number"]:focus,
 form#addCoctailForm select:focus, form#addCoctailForm textarea:focus{
-  color: white;
+  color: #dca14f;
 }
 
 form#addCoctailForm input[type="button"]{
@@ -76,6 +79,9 @@ form#addCoctailForm textarea#recipe{
   width: 100%;
   margin: 2% auto;
   display: block;
+  resize: none;
+  font-size: 1em;
+  padding-top: 2%;
 }
 input.formComponent:required:valid {
   border: 1px green solid ;
@@ -85,4 +91,24 @@ input.formComponent:required:invalid {
 }
 form#addCoctailForm p.hidden{
   display: none;
+}
+form#addCoctailForm div{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+form#addCoctailForm div div#imgPicker{
+  width: 50%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}
+form#addCoctailForm div div#imgPicker img{
+  max-width: 50%;
+}
+form#addCoctailForm div div#imgPicker input[type="file"]{
+  display: none;
+}
+form#addCoctailForm div div#imgPicker input[type="button"]{
+  width: 50%;
 }
