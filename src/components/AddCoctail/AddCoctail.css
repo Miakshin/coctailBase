@@ -1,0 +1,88 @@
+form#addCoctailForm{
+  margin: 0 6%;
+  border-radius: 3%;
+  border: 15px solid white;
+  background: url("./img/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 5%;
+}
+
+form#addCoctailForm h1{
+  color: #efbe4c;
+  text-shadow: 1px 1px #3a3a3a;
+  text-align: center;
+  margin: 2% auto;
+}
+form#addCoctailForm div.lineList{
+  display:flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 2% 0;
+}
+
+form#addCoctailForm div.lineList div[class^="line"]{
+  display: flex;
+  width: 50%;
+}
+form#addCoctailForm div.lineList div[class^="line"] input[type="text"]{
+  flex-grow: 4;
+}
+form#addCoctailForm div.lineList div[class^="line"] input[type="number"]{
+  flex-grow: 2;
+}
+
+form#addCoctailForm div.lineList div[class^="line"] select{
+  flex-grow: 1;
+  height: 46px;
+}
+
+form#addCoctailForm input{
+  height: 40px;
+}
+
+form#addCoctailForm input[type="text"],
+form#addCoctailForm input[type="number"],
+form#addCoctailForm select, form#addCoctailForm textarea{
+  background-color: rgba(0,0,0, 0.6);
+  color: white;
+}
+form#addCoctailForm input[type="text"]:focus,
+form#addCoctailForm input[type="number"]:focus,
+form#addCoctailForm select:focus, form#addCoctailForm textarea:focus{
+  color: white;
+}
+
+form#addCoctailForm input[type="button"]{
+  width: 25%;
+  background-color: #efbe4c;
+  font-size: 1.3em;
+  border-radius: 7px;
+  color: white;
+}
+form#addCoctailForm input[type="button"]:hover{
+  background-color: #ff9800;
+}
+
+form#addCoctailForm #coctailName{
+  width: 50%;
+  height: 40px;
+}
+form#addCoctailForm img{
+  width: 200px;
+}
+form#addCoctailForm textarea#recipe{
+  min-height: 160px;
+  width: 100%;
+  margin: 2% auto;
+  display: block;
+}
+input.formComponent:required:valid {
+  border: 1px green solid ;
+}
+input.formComponent:required:invalid {
+
+}
+form#addCoctailForm p.hidden{
+  display: none;
+}

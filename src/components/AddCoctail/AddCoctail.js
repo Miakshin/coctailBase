@@ -5,6 +5,8 @@ import axios from 'axios';
 import Line from './Line.js';
 import { addCoctails } from '../../apiActions';
 
+import "./AddCoctail.css";
+
 
 class AddCoctail extends Component{
   constructor(props) {
@@ -29,10 +31,10 @@ class AddCoctail extends Component{
   }
 
   removeLineValues(){
-    const defaultImgSrc = "http://s1.iconbird.com/ico/1012/DownToEarth/w512h5121350592377G12LoadDown.png"
+    document.getElementById("uploadImg").src="./img/default.png";
     let form = document.getElementById("addCoctailForm");
     form.reset();
-    document.getElementById("coctailName").value='';
+    // document.getElementById("coctailName").value='';
     //   document.getElementById("recipe").value='';
     //   document.getElementById("uploadImg").src = defaultImgSrc;
     //   document.getElementById("photoloader").files = [];
@@ -126,30 +128,28 @@ class AddCoctail extends Component{
       <Line id={id} key={id}/>
       )
     return(
-        <form className="addCoctailForm" id="addCoctailForm">
+        <form id="addCoctailForm">
           <h1>Add a new coctail</h1>
-          <label>Название:</label>
           <input type="text" name="name"
-          placeholder="Введите название"
+          placeholder="Coctail colls ..."
           id="coctailName"
           className="formComponent"
           pattern="[A-Za-zА-Яа-яЁё0-9_-]+${3,}"
           required/>
-          {lineList}
+          <div className="lineList">{lineList}</div>
           <input type="button" className="AddLineBtn"
           onClick={()=>this.addMoreLine()} value="Add a line" />
           <input type="button" className="AddLineBtn"
           onClick={()=>this.removeLastLine()} value="Remove line" />
           <br/>
-          <label>Рецепт приготовления</label>
           <textarea id='recipe'
           pattern="[A-Za-zА-Яа-яЁё0-9_-]+${10,}"
-          required>
+          required
+          placeholder="input recipe of this coctail!">
           </textarea>
           <br/>
           <input type="file" id="photoloader" name="photo" accept=".jpg, .jpeg, .png" onChange={()=>this.onSetImg()}/>
-          <img id="uploadImg" src = "http://s1.iconbird.com/ico/1012/DownToEarth/w512h5121350592377G12LoadDown.png" />
-          <button onClick={()=>console.log(document.getElementById("photoloader").files[0].name)}>Показать</button>
+          <img id="uploadImg" src = "./img/default.png" />
 
           <input type="button"
           className ={ passing ? "inPassing": ""}

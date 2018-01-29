@@ -6,7 +6,7 @@ import "./Coctail.css"
 
 class Coctail extends React.Component{
 
-  componentWillMount(){
+  componentDidMount(){
     const { dispatch } = this.props;
     const coctailId = this.props.match.params.id;
     dispatch(loadCoctail(coctailId));

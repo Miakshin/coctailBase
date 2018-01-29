@@ -2,15 +2,13 @@ import React from 'react';
 
 function Line(props){
   return (<div className={"line-" + props.id}>
-    <label>Компонент</label>
     <input type="text"
-    placeholder="введите компонент"
+    placeholder="input component name!"
     id={"coctailComponent" + props.id}
     className = "formComponent"
     pattern="[A-Za-zА-Яа-яЁё0-9_-]+${2,}"
     required
     />
-    <label>Количество</label>
     <input type="number"
     className = "formComponent"
     min="1" max="500"
