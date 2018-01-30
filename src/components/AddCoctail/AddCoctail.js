@@ -8,7 +8,7 @@ import { addCoctails } from '../../apiActions';
 import "./AddCoctail.css";
 
 function printErrorMasage(err){
-  
+
   if(!document.getElementsByClassName("errorSpan")[0]){
 
   let perent = document.getElementById("addCoctailForm");
@@ -175,6 +175,7 @@ class AddCoctail extends Component{
               <img id="uploadImg" src = "./img/default.png" />
             </div>
             <input type="button"
+            id="sendForm"
             className ={ passing ? "inPassing": ""}
             value="Add coctail"
             onClick={()=>this.sendForm()}/>
