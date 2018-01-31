@@ -1,26 +1,60 @@
 div.coctailsListPage{
   margin: 0 6%;
-  border-radius: 3%;
+  border-radius: 15px;
   border: 15px solid white;
-  background: radial-gradient(circle farthest-corner at 100px 50px, #FBF2EB, #352A3B);
+  background: url("./img/indBackground.jpg");
+  background-repeat: repeat-y;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  min-height: 460px;
+  flex-wrap:wrap;
+  justify-content: flex-start;
+  align-content: stretch;
+}
+
+div.coctailsListPage h2{
+  color: #bcbcbc;
+  text-shadow: 1px 1px #7f7f7f;
+  font-size: 1.6em;
+  text-align: center;
+  margin: 4%;
 }
 
 div.coctailsListPage article{
-  background: #999;
-  margin: 0.5% 2%;
+  background-color: rgba(0,0,0, 0.75);
+  margin: 0.5%;
+  border-radius: 15px;
   display: flex;
-  flex-wrap: wrap;
+  min-height: 250px;
+  flex-grow: 1;
 }
-div.coctailsListPage article:first-child{
-  margin-top: 2%;
+
+div.coctailsListPage article aside a , div.coctailsListPage article aside a:visited , div.coctailsListPage article aside p{
+  color: #a9aec1;
+}
+div.coctailsListPage article aside a:hover{
+  text-shadow: 3px 3px 3px #5f8483;
+}
+div.coctailsListPage article aside ul{
+  list-style-type: decimal;
+}
+div.coctailsListPage article aside a{
+  text-decoration: none;
+}
+div.coctailsListPage article aside a:first-child{
+  text-transform: uppercase;
+}
+div.coctailsListPage article aside {
+  display: flex;
+  margin: 15px 5px 0px 15px;
+  flex-direction: column;
 }
 div.coctailsListPage article:last-child{
-  margin-bottom: 2%;
+  max-width: 60%;
 }
 
 div.coctailsListPage article img{
-  height: 270px;
+  height: 240px;
   width: auto;
+  margin: auto 2%;
 }

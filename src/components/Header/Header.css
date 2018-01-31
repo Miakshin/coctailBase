@@ -48,13 +48,13 @@ header.header div.wrapper div.search{
 }
 header.header div.wrapper div.search input{
   width: 45%;
-  min-height: 30px;
+  height: 30px;
   border-radius: 10px;
   text-align: center;
 }
  header.header div.wrapper nav a{
   flex-basis: 15%;
-  margin: 0 1% 1% 1%;
+  margin: 0 1% 0 1%;
   border-radius: 0 0 10px 10px;
   color: white;
   height: 30px;
@@ -77,7 +77,7 @@ div.searchWraper-hiden{
 div.searchWraper{
   position: absolute;
   right: 6%;
-  top: 8.5%;
+  top: 74px;
   background: white;
   width: 40%;
   box-shadow: -2px 3px 4px #3a3a3a;
@@ -103,6 +103,9 @@ div.searchWraper div.searchedCoctail a{
   line-height: 1.5;
 }
 @media screen and (max-width: 767px) and (min-width: 480px){
+   header.header div.wrapper div.search input{
+     width: 100%;
+   }
    header.header div.wrapper nav a{
      font-size: 1.1em;
    }
@@ -125,6 +128,9 @@ div.searchWraper div.searchedCoctail a{
    }
    header.header div.wrapper{
      width: 70%;
+   }
+   div.searchWraper{
+     width: 62%;
    }
 }
 @media screen and (max-width: 677px) and (min-width: 600px){
@@ -171,5 +177,11 @@ div.searchWraper div.searchedCoctail a{
    }
    header.header div.wrapper{
      width: 70%;
+   }
+   header.header div.wrapper div.search input{
+     width: 100%;
+   }
+   div.searchWraper{
+     width: 62%;
    }
 }

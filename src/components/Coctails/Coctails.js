@@ -22,21 +22,25 @@ class Coctails extends React.Component{
 
   render(){
     const { loading, coctails, errors } = this.props.coctailStore;
-    if(loading){return (<div>Loading</div>)}
-    if (errors != null) { return (<div>Error!</div>)}
+    if(loading){return (<div className="coctailsListPage"><h2>Loading</h2></div>)}
+    if (errors != null) { return (<div className="coctailsListPage"><h2>Error!</h2></div>)}
     if(!coctails){
-      return (<div><p>No one coctail isn`t finded. Please, upload some coctails</p></div>)
+      return (<div className="coctailsListPage"><h2>No one coctail isn`t finded. Please, upload some coctails</h2></div>)
     }
     const mapingData =  coctails.map((coctail,id) =>
           <article key={id}>
           <img src={coctail.imgSrc ? coctail.imgSrc : ''} alt="coctail photo" />
-          <p>Название:<Link to={"/Coctails/" + coctail._id}>{coctail.name}</Link></p>
-          <p>Компоненты: {
-            coctail.components.map((item,id)=>
-          <li key={id}>{item}</li>
+          <aside>
+            <Link to={"/Coctails/" + coctail._id}>{coctail.name}</Link>
+            <p>Компоненты:
+              <ul>{
+              coctail.components.map((item,id)=>
+            <li key={id}>{item}</li>
         )
-          }</p>
-          <p>Рецепт приготовления: {coctail.recipe}</p>
+      }
+              </ul>
+            </p>
+          </aside>
           </article>
         )
     return(
