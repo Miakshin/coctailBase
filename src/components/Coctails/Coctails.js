@@ -32,14 +32,14 @@ class Coctails extends React.Component{
           <img src={coctail.imgSrc ? coctail.imgSrc : ''} alt="coctail photo" />
           <aside>
             <Link to={"/Coctails/" + coctail._id}>{coctail.name}</Link>
-            <p>Компоненты:
+            <div>Components:
               <ul>{
               coctail.components.map((item,id)=>
             <li key={id}>{item}</li>
         )
       }
               </ul>
-            </p>
+            </div>
           </aside>
           </article>
         )

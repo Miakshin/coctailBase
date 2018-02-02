@@ -16,10 +16,9 @@ article.coctailPage div.flex{
 
 
 article.coctailPage div.flex img{
-  width: 50%;
-  height: auto;
+  max-width: 45%;
   border-radius: 3%;
-  flex-grow: 4;
+  flex-grow: 1;
   margin: 1%;
 }
 
@@ -32,7 +31,7 @@ article.coctailPage div.flex div.flexWrapper{
   justify-content: flex-start;
 }
 
-article.coctailPage h1, article.coctailPage div.componentWrapper, article.coctailPage p{
+article.coctailPage h1, article.coctailPage div.componentWrapper, article.coctailPage div.recipeWraper{
   display: inline-block;
   background-color: rgba(0,0,0, 0.6);
   color: white;
@@ -46,14 +45,14 @@ article.coctailPage div.componentWrapper ul{
 article.coctailPage div.componentWrapper h2, article.coctailPage div.flexWrapper h1{
   text-align: center;
 }
-article.coctailPage p{
+article.coctailPage div.recipeWraper{
   width: 90%;
   margin: 0 2% 2% 2%;
 }
-article.coctailPage p h3{
+article.coctailPage div.recipeWraper h3{
   margin: 0;
 }
-article.coctailPage p pre{
+article.coctailPage div.recipeWraper pre{
   white-space: pre-wrap;
   text-indent: 2%;
   font-family: sans-serif;
@@ -64,4 +63,10 @@ article.coctailPage footer{
   margin: 0 2% 2% 0;
   color:white;
   text-shadow: 1px 1px #3a3a3a;
+}
+
+@media screen and (max-width: 1280px) and (min-width: 768px){
+  article.coctailPage div.flex img{
+    max-width: 35%;
+  }
 }

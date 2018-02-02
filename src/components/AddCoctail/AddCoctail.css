@@ -71,9 +71,6 @@ form#addCoctailForm #coctailName{
   width: 50%;
   height: 40px;
 }
-form#addCoctailForm img{
-  width: 200px;
-}
 form#addCoctailForm textarea#recipe{
   min-height: 160px;
   width: 100%;
@@ -87,10 +84,18 @@ input.formComponent:required:valid {
   border: 1px green solid ;
 }
 input.formComponent:required:invalid {
-
+  border: 1px red solid ;
 }
 form#addCoctailForm p.hidden{
   display: none;
+}
+form#addCoctailForm p.error{
+  background-color: rgba(0,0,0, 0.6);
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px 0px;
+  border-radius: 5px;
 }
 form#addCoctailForm div{
   display: flex;
@@ -148,6 +153,9 @@ span.errorSpan{
   }
   form#addCoctailForm div input#sendForm{
     width: 33%;
+  }
+  form#addCoctailForm div div#imgPicker img{
+    max-width: 66%;
   }
 }
 

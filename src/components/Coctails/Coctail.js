@@ -10,7 +10,12 @@ class Coctail extends React.Component{
     const { dispatch } = this.props;
     const coctailId = this.props.match.params.id;
     dispatch(loadCoctail(coctailId));
-    console.log(this.props)
+  }
+
+  getStringDate(data="0T0.1"){
+    let day = data.split("T")[0];
+    let time = data.split("T")[1].split(".")[0];
+    return `${day} at ${time}`;
   }
   render(){
 
@@ -35,8 +40,8 @@ class Coctail extends React.Component{
             </div>
           </div>
         </div>
-      <p><h3> How to prepare: </h3><br/><pre>{coctail.recipe}</pre></p>
-      <footer><span>Added: {coctail.createdAt}</span></footer>
+      <div className="recipeWraper"><h3> How to prepare: </h3><pre>{coctail.recipe}</pre></div>
+      <footer><span>Added: {this.getStringDate(coctail.createdAt)}</span></footer>
       </article>
     )}
 

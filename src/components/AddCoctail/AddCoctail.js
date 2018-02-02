@@ -14,11 +14,9 @@ function printErrorMasage(err){
   let perent = document.getElementById("addCoctailForm");
   let resetBtn =  document.getElementsByClassName("AddLineBtn")[1];
   let span = document.createElement("span");
-
   span.innerHTML = err;
   span.className = "errorSpan";
   perent.insertBefore(span, resetBtn.nextSibling);
-  // console.log(document.getElementsByClassName("errorSpan")[0]);
   setTimeout(()=>{perent.removeChild(document.getElementsByClassName("errorSpan")[0])}, 5000);
   }
 }
@@ -50,18 +48,6 @@ class AddCoctail extends Component{
     document.getElementById("uploadImg").src="./img/default.png";
     let form = document.getElementById("addCoctailForm");
     form.reset();
-    // document.getElementById("coctailName").value='';
-    //   document.getElementById("recipe").value='';
-    //   document.getElementById("uploadImg").src = defaultImgSrc;
-    //   document.getElementById("photoloader").files = [];
-    //
-    // for(let i=0;i<this.props.lineState;i++){
-    //   let currentCoctailComponent = "coctailComponent" + i;
-    //   let currentCoctailComponentCount = "coctailComponentCount" + i;
-    //
-    //   document.getElementById(currentCoctailComponent).value='';
-    //   document.getElementById(currentCoctailComponentCount).value='';
-    // }
   }
 
   onSetImg(){
@@ -123,11 +109,25 @@ class AddCoctail extends Component{
       imgSrc: imgSrc
     }
     if(validation === true & textAdreaIsValid()){
-      if(document.getElementById("recipe").value.length>=10){
           this.props.addCoctails(coctail);
-          this.removeLineValues();
-          this.props.onResetLineState();
-          this.setState({errors : false})}
+            if(this.props.postState.passing){
+              setTimeout(()=>{
+                if(this.props.postState.errors === null){
+                  this.removeLineValues();
+                  this.props.onResetLineState();
+                  this.setState({errors : false})
+                }else{
+                  console.log(this.props.postState.errors)
+                }
+              },1500)
+            }
+            if(this.props.postState.errors === null){
+              this.removeLineValues();
+              this.props.onResetLineState();
+              this.setState({errors : false})
+            }else{
+              console.log(this.props.postState.errors)
+            }
       }else{
         console.log(coctail);
         this.setState({errors: true})
@@ -181,10 +181,10 @@ class AddCoctail extends Component{
             onClick={()=>this.sendForm()}/>
           </div>
           <p className={this.state.errors === false ?
-         "hidden" : ""} >
-         Название коктейля и компонента должно быть не короче 2 символов<br/>
-         Длинна Рецепта должна быть не меньше 10 символов<br/>
-         Не забудьте указать количество компонентов
+         "hidden" : "error"} >
+         Name of a coctail and components shuld be longer then two lettrs<br/>
+         recipe length shuld be longer then ten lettrs<br/>
+         Don`t forget about a coctail photo
           </p>
         </form>
       )

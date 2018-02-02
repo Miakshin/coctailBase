@@ -17,7 +17,7 @@ div.coctailsListPage h2{
   text-shadow: 1px 1px #7f7f7f;
   font-size: 1.6em;
   text-align: center;
-  margin: 4%;
+  margin: 4% auto;
 }
 
 div.coctailsListPage article{
@@ -29,7 +29,7 @@ div.coctailsListPage article{
   flex-grow: 1;
 }
 
-div.coctailsListPage article aside a , div.coctailsListPage article aside a:visited , div.coctailsListPage article aside p{
+div.coctailsListPage article aside a , div.coctailsListPage article aside a:visited , div.coctailsListPage article aside div{
   color: #a9aec1;
 }
 div.coctailsListPage article aside a:hover{
@@ -43,6 +43,7 @@ div.coctailsListPage article aside a{
 }
 div.coctailsListPage article aside a:first-child{
   text-transform: uppercase;
+  margin-bottom: 5px;
 }
 div.coctailsListPage article aside {
   display: flex;
@@ -54,7 +55,14 @@ div.coctailsListPage article:last-child{
 }
 
 div.coctailsListPage article img{
-  height: 240px;
-  width: auto;
+  max-height: 240px;
+  max-width: 45%;
   margin: auto 2%;
+  border: 2px solid  #a9aec1;
+}
+
+@media screen and (max-width: 999px) and (min-width: 300px){
+  div.coctailsListPage article:last-child{
+    max-width: 100%;
+  }
 }
