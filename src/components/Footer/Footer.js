@@ -10,9 +10,9 @@ const Footer = () =>
     <span>phon number: +380938867784</span>
   </p>
   <div className="links">
-    <a href="https://github.com/Miakshin/coctailBase" className="link-to-git"></a>
-    <a href="https://www.facebook.com/profile.php?id=1450125752" className="link-to-fb"></a>
-    <a href="https://dou.ua/users/vlad-tkachyov/" className="link-to-dou" ></a>
+    <a href="https://github.com/Miakshin/coctailBase" className="link-to-git" alt="to github"> </a>
+    <a href="https://www.facebook.com/profile.php?id=1450125752" className="link-to-fb"> </a>
+    <a href="https://dou.ua/users/vlad-tkachyov/" className="link-to-dou" > </a>
   </div>
   </address>
 </footer>

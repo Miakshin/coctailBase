@@ -21,13 +21,13 @@ class Coctail extends React.Component{
 
     const { loading, coctail, errors } = this.props.coctailFitching;
 
-    if (loading){return(<div>Coctail is loading ...</div>)}
-    if (errors !== null) { return (<div>Error!</div>)}
-    if (coctail === []){return(<div> loading...</div>)}
+    if (loading){return(<article className="coctailPage"><h1 className="loadStatus">Coctail is loading ...</h1></article>)}
+    if (errors !== null) { return (<article className="coctailPage"><h1 className="loadStatus">Error!</h1></article>)}
+    if (coctail === []){return(<article className="coctailPage"><h1 className="loadStatus"> loading...</h1></article>)}
     if (coctail){return (
       <article className="coctailPage" key={coctail._id}>
         <div className="flex">
-          <img src={coctail.imgSrc ? coctail.imgSrc : ''} alt="coctail photo" />
+          <img src={coctail.imgSrc ? coctail.imgSrc : ''} alt="coctail" />
           <div className="flexWrapper">
             <h1>{coctail.name}</h1>
             <div className="componentWrapper">

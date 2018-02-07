@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import SearchWraper from './SearchWraper';
-import { loadCoctails, getCoctailByName } from '../../apiActions';
+import { getCoctailByName } from '../../apiActions';
 
 import './Header.css';
 
@@ -29,7 +29,7 @@ class Header extends React.Component{
         this.props.findedCoctails.findedCotails.map((el)=>
         <div className="searchedCoctail" key={el._id}
         onClick={()=>this.setState({value: ""})}>
-        <img src={el.imgSrc ? el.imgSrc : ''} alt="coctail.photo"
+        <img src={el.imgSrc ? el.imgSrc : ''} alt="finded coctail"
         />
         <a href={"/Coctails/" + el._id} >{el.name}</a>
         </div>))
@@ -39,12 +39,12 @@ class Header extends React.Component{
     }
 
     let findedCoctailsByName = getFindedCoctail();
-    const { loading, findedCotails, errors } = this.props.findedCoctails;
+    const { loading, errors } = this.props.findedCoctails;
     if (errors != null) { return (<div>Error!</div>)}
 
     return(
       <header className="header">
-      <div className="label"><Link to='/'><img src="img/logo.png"/>
+      <div className="label"><Link to='/'><img src="../img/logo.png" alt="logo"/>
       </Link><h1>Coctail Base</h1></div>
       <div className="wrapper">
         <nav className="navigation">

@@ -3,7 +3,6 @@ import {connect } from 'react-redux';
 import axios from 'axios';
 
 import Line from './Line.js';
-import { addCoctails } from '../../apiActions';
 
 import "./AddCoctail.css";
 
@@ -25,10 +24,6 @@ class AddCoctail extends Component{
   constructor(props) {
     super(props);
     this.state = {errors : false}
-  }
-
-  componentDidMount() {
-    console.log(this.props.postState)
   }
 
   addMoreLine(){
@@ -62,6 +57,7 @@ class AddCoctail extends Component{
 
   }
 
+
   sendForm(){
     let validation = true;
     function lengthValidation(input){
@@ -84,6 +80,7 @@ class AddCoctail extends Component{
       return document.getElementById("recipe").value.length >= 10 ?
       true : false
     }
+
     let components = [];
     for(let i=0;i<this.props.lineState;i++){
       let currentCoctailComponent = "coctailComponent" + i;
@@ -108,30 +105,40 @@ class AddCoctail extends Component{
       components: components,
       imgSrc: imgSrc
     }
+
     if(validation === true & textAdreaIsValid()){
-          this.props.addCoctails(coctail);
-            if(this.props.postState.passing){
-              setTimeout(()=>{
-                if(this.props.postState.errors === null){
-                  this.removeLineValues();
-                  this.props.onResetLineState();
-                  this.setState({errors : false})
-                }else{
-                  console.log(this.props.postState.errors)
+          this.props.addCoctails();
+          axios({
+            method: 'post',
+            url: 'http://localhost:3001/coctails',
+            data: coctail
+          })
+          .then((res)=>{
+              this.props.getSendStatus()
+          })
+          .then((res)=>{
+            this.clearForm()
+          })
+          .catch((result)=>{
+            if(result.request.status !== 0){
+              this.props.getSendError(result);
+                if(result.response.status === 413){
+                  printErrorMasage("Coctail photo too large!")
                 }
-              },1500)
-            }
-            if(this.props.postState.errors === null){
-              this.removeLineValues();
-              this.props.onResetLineState();
-              this.setState({errors : false})
-            }else{
-              console.log(this.props.postState.errors)
-            }
+          }else{
+            printErrorMasage("Can not connect to the server. Check your internet connection");
+          }
+        })
       }else{
         console.log(coctail);
         this.setState({errors: true})
       }
+  }
+
+  clearForm(){
+    this.removeLineValues();
+    this.props.onResetLineState();
+    this.setState({errors : false})
   }
 
   render() {
@@ -199,26 +206,38 @@ export default connect(
     postState: state.postState
   }),
   dispatch =>({
-    addCoctails: (coctail)=>{
+    addCoctails: ()=>{
       dispatch({
           type: 'ADD_COCTAIL_REQUESTED'
       });
 
-      axios({
-        method: 'post',
-        url: 'http://localhost:3001/coctails',
-        data: coctail
+      // axios({
+      //   method: 'post',
+      //   url: 'http://localhost:3001/coctails',
+      //   data: coctail
+      // })
+      // .then(result => {
+      //     dispatch({
+      //         type: 'ADD_COCTAIL_OK'
+      //     })
+      // })
+      // .catch(result => {
+      //     dispatch({
+      //         type: 'ADD_COCTAIL_FAIL',
+      //         errors: result.statusText
+      //     })
+      // })
+    },
+
+    getSendStatus: ()=>{
+      dispatch({
+          type: 'ADD_COCTAIL_OK'
       })
-      .then(result => {
-          dispatch({
-              type: 'ADD_COCTAIL_OK'
-          })
-      })
-      .catch(result => {
-          dispatch({
-              type: 'ADD_COCTAIL_FAIL',
-              errors: result.statusText
-          })
+    },
+    getSendError: (result)=>{
+      dispatch({
+          type: 'ADD_COCTAIL_FAIL',
+          errors: result.response.statusText
       })
     },
     onAddLine: () =>{

@@ -16,8 +16,6 @@ class Coctails extends React.Component{
   componentWillMount(){
     const { dispatch } = this.props;
     dispatch(loadCoctails());
-    console.log(this.props.coctailStore)
-
   }
 
   render(){
@@ -29,7 +27,7 @@ class Coctails extends React.Component{
     }
     const mapingData =  coctails.map((coctail,id) =>
           <article key={id}>
-          <img src={coctail.imgSrc ? coctail.imgSrc : ''} alt="coctail photo" />
+          <img src={coctail.imgSrc ? coctail.imgSrc : ''} alt="coctail" />
           <aside>
             <Link to={"/Coctails/" + coctail._id}>{coctail.name}</Link>
             <div>Components:

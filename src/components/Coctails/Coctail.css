@@ -5,6 +5,14 @@ article.coctailPage{
   background-position: center;
   border-radius: 3%;
   border: 15px solid white;
+  min-height: 460px;
+}
+
+article.coctailPage h1.loadStatus{
+  margin: 10px auto;
+  display: block;
+  width: 40%;
+  text-align: center;
 }
 
 article.coctailPage div.flex{

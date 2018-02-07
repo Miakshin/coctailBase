@@ -28,7 +28,7 @@ div.homeWrapper h1{
   text-shadow: 1px 1px black;
 }
 
-div.homeWrapper p{
+div.homeWrapper div{
   display: block;
   width: 63%;
   margin: 0 4% 4% 4%;
@@ -40,16 +40,16 @@ div.homeWrapper p{
   line-height: 1.3em;
   font-size: 1.5em;
 }
-div.homeWrapper p span{
+div.homeWrapper div span{
   display: block;
   text-indent: 2%;
 }
-div.homeWrapper p h2{
+div.homeWrapper div h2{
   font-size: 1.4em;
   line-height: 1.1em;
   margin: 10px 0px;
 }
-div.homeWrapper p a{
+div.homeWrapper div a{
   display: block;
   text-decoration: none;
   border-radius: 5px;
@@ -62,15 +62,15 @@ div.homeWrapper p a{
   padding: 10px;
 }
 
-div.homeWrapper p a:hover{
+div.homeWrapper div a:hover{
   background-color: #ff9800;
 }
 
 @media screen and (max-width: 767px) and (min-width: 480px){
-  div.homeWrapper p{
+  div.homeWrapper div{
     width: 86%;
   }
-  div.homeWrapper p h2{
+  div.homeWrapper div h2{
     font-size: 1.1em;
     line-height: 1em;
   }
@@ -79,15 +79,15 @@ div.homeWrapper p a:hover{
     width: 92%;
     font-size: 1.85em;
   }
-  div.homeWrapper p span{
+  div.homeWrapper div span{
     line-height: 1em;
   }
 }
 @media screen and (max-width: 479px){
-  div.homeWrapper p{
+  div.homeWrapper div{
     width: 86%;
   }
-  div.homeWrapper p h2{
+  div.homeWrapper div h2{
     font-size: 1em;
     line-height: 1em;
   }
@@ -96,10 +96,10 @@ div.homeWrapper p a:hover{
     width: 92%;
     font-size: 1.6em;
   }
-  div.homeWrapper p span{
+  div.homeWrapper div span{
     line-height: 1em;
   }
-  div.homeWrapper p a{
+  div.homeWrapper div a{
     width: 50%;
   }
 }
