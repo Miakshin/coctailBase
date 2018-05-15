@@ -3,6 +3,7 @@ div.coctailsListPage{
   border-radius: 15px;
   border: 15px solid white;
   background: url("./img/indBackground.jpg");
+  background-size: 100%;
   background-repeat: repeat-y;
   display: flex;
   flex-direction: row;

@@ -28,6 +28,7 @@ article.coctailPage div.flex img{
   border-radius: 3%;
   flex-grow: 1;
   margin: 1%;
+  object-fit: contain;
 }
 
 article.coctailPage div.flex div.flexWrapper{
